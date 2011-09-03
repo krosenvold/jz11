@@ -9,6 +9,7 @@ public class CreditRanking
     public boolean hasCreditFor(float amount){
         return true;
     }
+
     public static CreditRanking forPrivateCustomers(){
         return new CreditRanking();
     }

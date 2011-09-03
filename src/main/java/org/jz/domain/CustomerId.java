@@ -39,4 +39,9 @@ public class CustomerId {
     {
         return id;
     }
+
+    public int getId()
+    {
+        return id;
+    }
 }

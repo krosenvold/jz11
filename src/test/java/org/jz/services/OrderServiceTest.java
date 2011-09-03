@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.jz.domain.PersonCustomer;
 import org.jz.domain.PersonName;
 import org.jz.domain.Product;
+import org.jz.persistence.PersonCustomerDao;
+import org.jz.persistence.StubPersonCustomerDao;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -18,16 +20,21 @@ public class OrderServiceTest
 
     private final AccountService accountService = new AccountService();
 
-    private final CustomerService customerService = new CustomerService();
+    PersonCustomerDao personCustomerDao = new StubPersonCustomerDao();
+
+    private final CustomerService customerService = new CustomerService( personCustomerDao );
 
     @Test
     public void orderVeggies()
     {
-        final PersonCustomer customer = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
+        final List<PersonCustomer> customers = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
+        PersonCustomer customer = customers.get(0);
         OrderService orderService = new OrderService( accountService, inventoryService );
         List<Product> products = inventoryService.findProductsByName("Broccoli", "Carrot");
-        int max = accountService.getMaxItemsForOrder( customer.getCustomerId());
+        int max = accountService.getMaxItemsForOrder( customer.getCustomerId() );
         final List<Product> orderedProducts = orderService.orderItems( customer.getCustomerId(), products, max );
         assertEquals(2, orderedProducts.size());
     }
+
+
 }

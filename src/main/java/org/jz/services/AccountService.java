@@ -1,5 +1,7 @@
 package org.jz.services;
 
+import org.apache.commons.lang.Validate;
+
 import org.jz.domain.CreditRanking;
 import org.jz.domain.Customer;
 import org.jz.domain.CustomerId;
@@ -17,20 +19,25 @@ public class AccountService
 
     public Order createOrder( CustomerId authenticatedCustomer )
     {
-        return null;
+        Validate.notNull( authenticatedCustomer  );
+        return new Order();
     }
 
     private String getCreditRankingFromExternalSource( Customer customer )
     {
+        Validate.notNull( customer );
         return "AAA";
     }
 
     public void orderItem( Order order, Product product )
     {
+        Validate.notNull( order );
+        Validate.notNull( product );
     }
 
     public int getMaxItemsForOrder( CustomerId customerId )
     {
+        Validate.notNull( customerId );
         return 17;
     }
 

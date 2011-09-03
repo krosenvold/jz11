@@ -1,10 +1,14 @@
 package org.jz.services;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.jz.domain.CreditRanking;
 import org.jz.domain.CustomerId;
 import org.jz.domain.PersonCustomer;
 import org.jz.domain.PersonName;
+import org.jz.persistence.PersonCustomerDao;
+import org.jz.persistence.StubPersonCustomerDao;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -16,7 +20,8 @@ public class AccountServiceTest
 {
     private final AccountService accountService = new AccountService();
     private final CustomerId high_credit = new CustomerId( 3000 );
-    private final CustomerService customerService = new CustomerService();
+    PersonCustomerDao personCustomerDao = new StubPersonCustomerDao();
+    private final CustomerService customerService = new CustomerService( personCustomerDao );
 
 
     private final CustomerId id = new CustomerId( 123 );
@@ -39,8 +44,8 @@ public class AccountServiceTest
 
     @Test
     public void findCreditRanking(){
-        final PersonCustomer customer = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
-        final CreditRanking creditRanking = accountService.getCreditRanking( customer );
+        final List<PersonCustomer> customers = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
+        final CreditRanking creditRanking = accountService.getCreditRanking( customers.get( 0) );
         assertTrue( creditRanking.hasCreditFor( 345f ) );
 
     }

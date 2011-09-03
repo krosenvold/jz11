@@ -14,6 +14,21 @@
       <artifactId>junit</artifactId>
       <version>4.8.1</version>
     </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.8.5</version>
+    </dependency>
   </dependencies>
   <build>
     <pluginManagement>
@@ -32,20 +47,20 @@
 
     <plugins>
       <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-surefire-plugin</artifactId>
-       <version>2.9</version>
-       <configuration>
-           <argLine>-client -Xmx512m -XX:MaxPermSize=192m -Djava.awt.headless=true</argLine>
-           <excludes>
-               <exclude>**/**/VelgMiddagActionTest.java</exclude>
-           </excludes>
-           <includes>
-               <include>**/*Test.java</include>
-               <include>**/*TestSuite.java</include>
-           </includes>
-           <forkMode>once</forkMode>
-       </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <argLine>-client -Xmx512m -XX:MaxPermSize=192m -Djava.awt.headless=true</argLine>
+          <excludes>
+            <exclude>**/**/VelgMiddagActionTest.java</exclude>
+          </excludes>
+          <includes>
+            <include>**/*Test.java</include>
+            <include>**/*TestSuite.java</include>
+          </includes>
+          <forkMode>once</forkMode>
+        </configuration>
       </plugin>
     </plugins>
   </build>
