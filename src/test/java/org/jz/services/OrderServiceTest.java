@@ -23,7 +23,6 @@ public class OrderServiceTest
     @Test
     public void orderItems()
     {
-
         final PersonCustomer customer = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
         OrderService orderService = new OrderService( accountService, inventoryService );
         List<Product> products = inventoryService.findProductsByName("Broccoli", "Salad");
