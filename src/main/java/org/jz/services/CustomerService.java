@@ -10,6 +10,7 @@ import org.jz.domain.PersonName;
 public class CustomerService {
     public PersonCustomer findCustomer( PersonName personName )
     {
+        // todo, implement for real
         return new PersonCustomer( personName, new CustomerId(personName.hashCode()) );
     }
 }
