@@ -26,8 +26,7 @@ public class OrderServiceTest
         final PersonCustomer customer = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
         OrderService orderService = new OrderService( accountService, inventoryService );
         List<Product> products = inventoryService.findProductsByName("Broccoli", "Carrot");
-        int max = accountService.getMaxItemsForOrder( customer.getCustomerId());
-        final List<Product> orderedProducts = orderService.orderItems( customer.getCustomerId(), products, max );
+        final List<Product> orderedProducts = orderService.orderItems( customer.getCustomerId(), products );
         assertEquals(2, orderedProducts.size());
     }
 }
