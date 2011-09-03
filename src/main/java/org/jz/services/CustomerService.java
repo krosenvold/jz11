@@ -29,7 +29,7 @@ public class CustomerService {
         return personCustomerDao.getPersonCustomer( customerId );
     }
 
-    public List<PersonCustomer> findCustomer( PersonName personName )
+    public List<PersonCustomer> findCustomers( PersonName personName )
     {
         return personCustomerDao.findPersonCustomers( personName );
     }

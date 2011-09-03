@@ -7,6 +7,7 @@ import java.util.List;
 import org.jz.domain.CustomerId;
 import org.jz.domain.PersonCustomer;
 import org.jz.domain.PersonName;
+import org.jz.services.CustomerServiceTest;
 
 /**
  * @author Kristian Rosenvold
@@ -17,6 +18,7 @@ public class StubPersonCustomerDao implements PersonCustomerDao
     public PersonCustomer getPersonCustomer( CustomerId customerId )
         throws SQLException
     {
+        if (customerId.equals( CustomerServiceTest.deletePassivated)) return null;
         return new PersonCustomer( new PersonName( "Freddy" , "Stub"), customerId );
     }
 

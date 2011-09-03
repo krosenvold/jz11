@@ -44,7 +44,8 @@ public class AccountServiceTest
 
     @Test
     public void findCreditRanking(){
-        final List<PersonCustomer> customers = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
+        final List<PersonCustomer> customers = customerService.findCustomers(
+            new PersonName( "Kristian", "Rosenvold" ) );
         final CreditRanking creditRanking = accountService.getCreditRanking( customers.get( 0) );
         assertTrue( creditRanking.hasCreditFor( 345f ) );
 
