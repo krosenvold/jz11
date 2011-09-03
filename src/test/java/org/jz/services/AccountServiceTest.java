@@ -16,20 +16,19 @@ public class AccountServiceTest
 
     private final CustomerId id = new CustomerId( 123 );
 
-    private final int systemMaxCredit = 2000;
 
     @Test
     public void testGetCreditLimit()
     {
-        final int creditLimit = accountService.getCreditLimit( id, systemMaxCredit );
+        final int creditLimit = accountService.getCreditLimit( id, 2000 );
         assertEquals( 17, creditLimit);
     }
 
     @Test
     public void testWithMax()
     {
-        final int creditLimit = accountService.getCreditLimit( high_credit, systemMaxCredit );
-        assertEquals( systemMaxCredit, creditLimit);
+        final int creditLimit = accountService.getCreditLimit( high_credit, 2000 );
+        assertEquals( 2000, creditLimit);
     }
 
 }
