@@ -17,4 +17,14 @@ public class PersonCustomer extends Customer {
     {
         return personName;
     }
+
+    @Override
+    public String getDisplayName()
+    {
+        return personName.getFullName();
+    }
+
+    public String getFullName(){
+        return personName.getFullName();
+    }
 }

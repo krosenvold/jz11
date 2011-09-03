@@ -24,4 +24,6 @@ public abstract class Customer
     {
         return customerId;
     }
+
+    public abstract String getDisplayName();
 }
