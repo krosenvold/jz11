@@ -10,6 +10,6 @@ import org.jz.domain.PersonName;
 public class CustomerService {
     public PersonCustomer findCustomer( PersonName personName )
     {
-        return new PersonCustomer( personName, new CustomerId(personName.hashCode()));
+        return new PersonCustomer( personName, new CustomerId(personName.hashCode()) );
     }
 }
