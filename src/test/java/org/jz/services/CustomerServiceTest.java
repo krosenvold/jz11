@@ -57,6 +57,7 @@ public class CustomerServiceTest
 
     }
 
+    @Test
     public void createANewCustomer(){
         final PersonName personName = new PersonName( "Fred", "Astaire" );
         customerService.createPersonCustomer( personName );
