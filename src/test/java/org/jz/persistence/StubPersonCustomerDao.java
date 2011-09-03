@@ -37,4 +37,9 @@ public class StubPersonCustomerDao implements PersonCustomerDao
     public void passivateCustomer( CustomerId customerId )
     {
     }
+
+    @Override
+    public void createPersonCustomer( PersonName personName )
+    {
+    }
 }

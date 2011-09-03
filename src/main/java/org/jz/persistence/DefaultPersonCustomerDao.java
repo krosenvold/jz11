@@ -51,6 +51,25 @@ public class DefaultPersonCustomerDao
 
     }
 
+    @Override
+    public void createPersonCustomer( PersonName personName )
+    {
+        try
+        {
+            final Connection conn = getConnection();
+            PreparedStatement stmt =
+                conn.prepareStatement( "insert into CUSTOMER  (firstname, lastname) VALUES (?,?)" );
+            stmt.setString( 1, personName.getFirstName() );
+            stmt.setString( 2, personName.getLastName() );
+            stmt.executeUpdate();
+        }
+        catch ( SQLException e )
+        {
+            throw new RuntimeException( e );
+        }
+
+    }
+
     public Connection getConnection()
         throws SQLException
     {
@@ -65,15 +84,15 @@ public class DefaultPersonCustomerDao
         final Connection conn;
         try
         {
-            List<PersonCustomer> result = new ArrayList<PersonCustomer>(  );
+            List<PersonCustomer> result = new ArrayList<PersonCustomer>();
             conn = dataSource.getConnection();
-            PreparedStatement stmt =
-                conn.prepareStatement( "SELECT CUSTOMERID,FIRSTNAME, LASTNAME from CUSTOMER WHERE FIRSTNAME LIKE ? and LASTNAME LIKE ?" );
+            PreparedStatement stmt = conn.prepareStatement(
+                "SELECT CUSTOMERID,FIRSTNAME, LASTNAME from CUSTOMER WHERE FIRSTNAME LIKE ? and LASTNAME LIKE ?" );
             stmt.setString( 1, personName.getFirstName() );
             stmt.setString( 2, personName.getLastName() );
 
             ResultSet rs = stmt.executeQuery();
-            while( rs.next() )
+            while ( rs.next() )
             {
                 final int id = rs.getInt( 1 );
                 final String firstName = rs.getString( 2 );
@@ -81,7 +100,7 @@ public class DefaultPersonCustomerDao
                 CustomerId customerId = new CustomerId( id );
                 final PersonCustomer personCustomer =
                     new PersonCustomer( new PersonName( firstName, lastName ), customerId );
-                result.add(  personCustomer  );
+                result.add( personCustomer );
             }
             return result;
         }

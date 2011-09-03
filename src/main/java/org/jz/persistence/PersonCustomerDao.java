@@ -20,4 +20,6 @@ public interface PersonCustomerDao
     void deleteCustomer( CustomerId customerId );
 
     void passivateCustomer( CustomerId customerId );
+
+    void createPersonCustomer( PersonName personName);
 }
