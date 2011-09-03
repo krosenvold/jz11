@@ -3,6 +3,7 @@ package org.jz.services;
 import java.util.List;
 
 import org.junit.Test;
+import org.jz.domain.CustomerId;
 import org.jz.domain.PersonCustomer;
 import org.jz.domain.PersonName;
 import org.jz.domain.Product;
@@ -30,7 +31,7 @@ public class OrderServiceTest
         final List<PersonCustomer> customers = customerService.findCustomers(
             new PersonName( "Kristian", "Rosenvold" ) );
         PersonCustomer customer = customers.get(0);
-        OrderService orderService = new OrderService( accountService, inventoryService );
+        OrderService orderService = new OrderService( accountService, inventoryService, customerService );
         List<Product> products = inventoryService.findProductsByName("Broccoli", "Carrot");
         int max = accountService.getMaxItemsForOrder( customer.getCustomerId() );
         final List<Product> orderedProducts = orderService.orderItems( customer.getCustomerId(), products, max );
@@ -38,4 +39,7 @@ public class OrderServiceTest
     }
 
 
+    public void testDelete(){
+        customerService.deleteCustomer( new CustomerId( 124 ) );
+    }
 }

@@ -3,6 +3,8 @@ package org.jz.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.jz.domain.CustomerId;
 import org.jz.domain.Order;
 import org.jz.domain.Product;
@@ -17,10 +19,15 @@ public class OrderService
 
     private final InventoryService inventoryService;
 
-    public OrderService( AccountService accountService, InventoryService inventoryService )
+    private final CustomerService customerService;
+
+    @Inject
+    public OrderService( AccountService accountService, InventoryService inventoryService,
+                         CustomerService customerService )
     {
         this.accountService = accountService;
         this.inventoryService = inventoryService;
+        this.customerService = customerService;
     }
 
     public List<Product> orderItems( CustomerId authenticatedCustomer, List<Product> products, int maxItems )
@@ -40,5 +47,10 @@ public class OrderService
             orderedProducts.add( product );
         }
         return orderedProducts;
+    }
+
+    public void deleteCustomer( CustomerId customerId )
+    {
+        customerService.deleteCustomer( customerId );
     }
 }
