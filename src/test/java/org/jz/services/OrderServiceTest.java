@@ -21,13 +21,12 @@ public class OrderServiceTest
     private final CustomerService customerService = new CustomerService();
 
     @Test
-    public void orderItems()
+    public void orderVeggies()
     {
         final PersonCustomer customer = customerService.findCustomer( new PersonName( "Kristian", "Rosenvold" ) );
         OrderService orderService = new OrderService( accountService, inventoryService );
-        List<Product> products = inventoryService.findProductsByName("Broccoli", "Salad");
+        List<Product> products = inventoryService.findProductsByName("Broccoli", "Carrot");
         final List<Product> orderedProducts = orderService.orderItems( customer.getCustomerId(), products );
         assertEquals(2, orderedProducts.size());
-
     }
 }
