@@ -22,7 +22,7 @@ public class OrderService
         this.inventoryService = inventoryService;
     }
 
-    public List<Product> orderItems( CustomerId authenticatedCustomer, List<Product> products ){
+    public List<Product> orderItems( CustomerId authenticatedCustomer, List<Product> products, int maxItems ){
         final Order order = accountService.createOrder(authenticatedCustomer);
         List<Product> orderedProducts = new ArrayList<Product>(  );
         for (Product product : products) {

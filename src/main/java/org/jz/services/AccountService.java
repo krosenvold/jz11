@@ -15,4 +15,9 @@ public class AccountService {
 
     public void orderItem(Order order, Product product) {
     }
+
+    public int getMaxItemsForOrder( CustomerId customerId )
+    {
+        return 17;
+    }
 }
