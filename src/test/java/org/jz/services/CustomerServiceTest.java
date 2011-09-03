@@ -1,5 +1,6 @@
 package org.jz.services;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Test;
@@ -8,9 +9,7 @@ import org.jz.domain.PersonCustomer;
 import org.jz.domain.PersonName;
 import org.jz.persistence.StubPersonCustomerDao;
 
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 
 /**
  * @author Kristian Rosenvold
@@ -62,5 +61,12 @@ public class CustomerServiceTest
         final PersonName personName = new PersonName( "Fred", "Astaire" );
         customerService.createPersonCustomer( personName );
         assertTrue( customerService.findCustomers( personName ).size() == 1 );
+    }
+
+    @Test
+    public void customerDemo()
+        throws SQLException
+    {
+
     }
 }

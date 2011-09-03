@@ -30,25 +30,33 @@ public class DefaultPersonCustomerDao
     public PersonCustomer getPersonCustomer( CustomerId customerId )
         throws SQLException
     {
-        final Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement( "SELECT firstname, lastname from CUSTOMER WHERE CUSTOMERID=?" );
-        stmt.setInt( 1, customerId.getId() );
-
-        ResultSet rs = stmt.executeQuery();
-        if ( rs.next() )
+        try
         {
-            final String firstName = rs.getString( 1 );
-            final String lastName = rs.getString( 2 );
-            final PersonCustomer personCustomer =
-                new PersonCustomer( new PersonName( firstName, lastName ), customerId );
+            final Connection conn = getConnection();
+            PreparedStatement stmt =
+                conn.prepareStatement( "SELECT firstname, lastname from CUSTOMER WHERE CUSTOMERID=?" );
+            stmt.setInt( 1, customerId.getId() );
+
+            ResultSet rs = stmt.executeQuery();
             if ( rs.next() )
             {
-                throw new IllegalStateException( "There are multiple customers for id " + customerId.getId() );
+                final String firstName = rs.getString( 1 );
+                final String lastName = rs.getString( 2 );
+                final PersonCustomer personCustomer =
+                    new PersonCustomer( new PersonName( firstName, lastName ), customerId );
+                if ( rs.next() )
+                {
+                    throw new IllegalStateException( "There are multiple customers for id " + customerId.getId() );
+                }
+                return personCustomer;
             }
-            return personCustomer;
-        }
-        return null;
+            return null;
 
+        }
+        catch ( SQLException e )
+        {
+            throw new RuntimeException( e );
+        }
     }
 
     @Override

@@ -18,7 +18,10 @@ public class StubPersonCustomerDao implements PersonCustomerDao
     public PersonCustomer getPersonCustomer( CustomerId customerId )
         throws SQLException
     {
-        if (customerId.equals( CustomerServiceTest.deletePassivated)) return null;
+        if ( customerId.equals( CustomerServiceTest.deletePassivated ) )
+        {
+            return null;
+        }
         return new PersonCustomer( new PersonName( "Freddy" , "Stub"), customerId );
     }
 
