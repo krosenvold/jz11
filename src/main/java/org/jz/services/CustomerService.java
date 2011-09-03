@@ -29,6 +29,12 @@ public class CustomerService {
         return personCustomerDao.getPersonCustomer( customerId );
     }
 
+
+    public void createPersonCustomer( PersonName personName )
+    {
+        personCustomerDao.createPersonCustomer( personName );
+    }
+
     public List<PersonCustomer> findCustomers( PersonName personName )
     {
         return personCustomerDao.findPersonCustomers( personName );

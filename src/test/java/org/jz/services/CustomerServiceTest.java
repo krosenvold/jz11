@@ -10,6 +10,7 @@ import org.jz.persistence.StubPersonCustomerDao;
 
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * @author Kristian Rosenvold
@@ -54,5 +55,11 @@ public class CustomerServiceTest
         customerService.passivateCustomer( deletePassivated );
         assertNull( customerService.getPersonCustomer( deletePassivated ) );
 
+    }
+
+    public void createANewCustomer(){
+        final PersonName personName = new PersonName( "Fred", "Astaire" );
+        customerService.createPersonCustomer( personName );
+        assertTrue( customerService.findCustomers( personName ).size() == 1 );
     }
 }
