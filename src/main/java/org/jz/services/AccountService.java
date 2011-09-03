@@ -10,11 +10,9 @@ import org.jz.domain.Product;
 public class AccountService {
 
     public Order createOrder(CustomerId authenticatedCustomer) {
-        //To change body of created methods use File | Settings | File Templates.
         return null;
     }
 
     public void orderItem(Order order, Product product) {
-        //To change body of created methods use File | Settings | File Templates.
     }
 }
