@@ -1,5 +1,8 @@
 package org.jz.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jz.domain.Product;
 
 /**
@@ -7,6 +10,15 @@ import org.jz.domain.Product;
  */
 public class InventoryService {
     public void remove(Product product) {
-        //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public List<Product> findProductsByName( String... productNames )
+    {
+        List<Product> result = new ArrayList<Product>(  );
+        for ( String productName : productNames )
+        {
+            result.add(  new Product(productName) );
+        }
+        return result;
     }
 }
