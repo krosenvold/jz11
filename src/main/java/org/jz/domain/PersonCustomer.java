@@ -3,13 +3,15 @@ package org.jz.domain;
 /**
  * @author Kristian Rosenvold
  */
-public class PersonCustomer extends Customer {
+public class PersonCustomer
+    extends Customer
+{
 
     private final PersonName personName;
 
     public PersonCustomer( PersonName personName, CustomerId customerId )
     {
-        super(customerId);
+        super( customerId );
         this.personName = personName;
     }
 
@@ -24,7 +26,8 @@ public class PersonCustomer extends Customer {
         return personName.getFullName();
     }
 
-    public String getFullName(){
+    public String getFullName()
+    {
         return personName.getFullName();
     }
 }
