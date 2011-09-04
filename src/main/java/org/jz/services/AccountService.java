@@ -19,7 +19,7 @@ public class AccountService
 
     public Order createOrder( CustomerId authenticatedCustomer )
     {
-        Validate.notNull( authenticatedCustomer  );
+        Validate.notNull( authenticatedCustomer );
         return new Order();
     }
 
@@ -48,13 +48,16 @@ public class AccountService
     }
 
 
-    public CreditRanking getCreditRanking( Customer customer)
+    public CreditRanking getCreditRanking( Customer customer )
     {
         boolean isPrivateCustomer = !customer.isCompanyCustomer();
-        if (!isPrivateCustomer){
+        if ( !isPrivateCustomer )
+        {
             String creditRanking = getCreditRankingFromExternalSource( customer );
             return CreditRanking.forCompanyCustomer( creditRanking );
-        } else {
+        }
+        else
+        {
             return CreditRanking.forPrivateCustomers();
         }
     }
