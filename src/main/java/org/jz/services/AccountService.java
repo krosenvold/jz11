@@ -8,6 +8,7 @@ import org.jz.domain.CustomerId;
 import org.jz.domain.Order;
 import org.jz.domain.Product;
 import org.jz.persistence.AccountDao;
+import org.jz.persistence.DefaultAccountDao;
 
 /**
  * @author Kristian Rosenvold
@@ -15,7 +16,7 @@ import org.jz.persistence.AccountDao;
 public class AccountService
 {
 
-    private final AccountDao accountDao = new AccountDao();
+    private final AccountDao accountDao = new DefaultAccountDao();
 
     public Order createOrder( CustomerId authenticatedCustomer )
     {
@@ -43,6 +44,8 @@ public class AccountService
 
     public int getCreditLimit( CustomerId Id, int systemMaxCredit )
     {
+        String test = "ABC";
+        Validate.notNull( test );
         final int creditLimit = accountDao.getCreditLimit( Id );
         return creditLimit > systemMaxCredit ? systemMaxCredit : creditLimit;
     }
