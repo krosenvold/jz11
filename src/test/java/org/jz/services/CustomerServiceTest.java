@@ -21,7 +21,8 @@ public class CustomerServiceTest
 
      public static CustomerId customerId = new CustomerId( 123 );
     public static final CustomerId deletePassivated = new CustomerId( 124 );
-  PersonCustomer personCustomer;
+
+    private PersonCustomer personCustomer;
 
     @Test
     public void testGetPersonCustomer()
@@ -68,6 +69,8 @@ public class CustomerServiceTest
     public void customerDemo()
         throws SQLException
     {
-      // customerService.getPersonCustomer(customerId);
+        PersonCustomer personCustomer = customerService.getPersonCustomer( new CustomerId( 123456 ));
+        assertNotNull(  personCustomer );
+
     }
 }
