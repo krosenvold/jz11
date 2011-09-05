@@ -25,7 +25,8 @@ public class PersonName
         return lastName;
     }
 
-    public String getFullName(){
+    public String getFullName()
+    {
         return firstName + " " + lastName;
     }
 }

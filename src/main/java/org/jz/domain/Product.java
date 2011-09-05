@@ -3,7 +3,8 @@ package org.jz.domain;
 /**
  * @author <a href="mailto:kristian@zenior.no">Kristian Rosenvold</a>
  */
-public class Product {
+public class Product
+{
     private final String productName;
 
     public Product( String productName )

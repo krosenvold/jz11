@@ -30,7 +30,8 @@ public class OrderService
         this.customerService = customerService;
     }
 
-    public List<Product> orderItems( CustomerId authenticatedCustomer, List<Product> products, int maxItems )
+    public List<Product> orderItems( CustomerId authenticatedCustomer, List<Product> products,
+                                     int maxItems )
     {
         final Order order = accountService.createOrder( authenticatedCustomer );
         List<Product> orderedProducts = new ArrayList<Product>();
@@ -38,7 +39,8 @@ public class OrderService
         if ( products.size() > maxItems )
         {
             throw new OrderException(
-                "Too many items in order, " + products.size() + ", " + maxItems + " is current max" );
+                "Too many items in order, " + products.size() + ", " + maxItems
+                    + " is current max" );
         }
         for ( Product product : products )
         {

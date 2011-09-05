@@ -21,5 +21,5 @@ public interface PersonCustomerDao
 
     void passivateCustomer( CustomerId customerId );
 
-    void createPersonCustomer( PersonName personName);
+    void createPersonCustomer( PersonName personName );
 }

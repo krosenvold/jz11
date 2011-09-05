@@ -3,7 +3,8 @@ package org.jz.domain;
 /**
  * @author <a href="mailto:kristian@zenior.no">Kristian Rosenvold</a>
  */
-public class CustomerId {
+public class CustomerId
+{
 
     private final int id;
 

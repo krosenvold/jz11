@@ -17,9 +17,11 @@ import static junit.framework.Assert.*;
 public class CustomerServiceTest
 {
 
-    private final CustomerService customerService = new CustomerService( new StubPersonCustomerDao() );
+    private final CustomerService customerService =
+        new CustomerService( new StubPersonCustomerDao() );
 
-     public static CustomerId customerId = new CustomerId( 123 );
+    public static CustomerId customerId = new CustomerId( 123 );
+
     public static final CustomerId deletePassivated = new CustomerId( 124 );
 
     private PersonCustomer personCustomer;
@@ -29,15 +31,16 @@ public class CustomerServiceTest
         throws Exception
     {
         final PersonCustomer personCustomer = customerService.getPersonCustomer( customerId );
-        assertNotNull( personCustomer);
+        assertNotNull( personCustomer );
     }
 
     @Test
     public void testFindCustomer()
         throws Exception
     {
-        final List<PersonCustomer> personCustomers = customerService.findCustomers( new PersonName( "Jon", "Smith" ) );
-        assertNotNull( personCustomers);
+        final List<PersonCustomer> personCustomers =
+            customerService.findCustomers( new PersonName( "Jon", "Smith" ) );
+        assertNotNull( personCustomers );
 
     }
 
@@ -59,7 +62,8 @@ public class CustomerServiceTest
     }
 
     @Test
-    public void createANewCustomer(){
+    public void createANewCustomer()
+    {
         final PersonName personName = new PersonName( "Fred", "Astaire" );
         customerService.createPersonCustomer( personName );
         assertTrue( customerService.findCustomers( personName ).size() == 1 );
@@ -69,8 +73,9 @@ public class CustomerServiceTest
     public void customerDemo()
         throws SQLException
     {
-        PersonCustomer personCustomer = customerService.getPersonCustomer( new CustomerId( 123456 ));
-        assertNotNull(  personCustomer );
+        CustomerId customerId1 = new CustomerId( 123456 );
+        PersonCustomer personCustomer = customerService.getPersonCustomer( customerId1 );
+        assertNotNull( personCustomer );
 
     }
 }

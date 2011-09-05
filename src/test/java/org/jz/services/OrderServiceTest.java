@@ -28,18 +28,21 @@ public class OrderServiceTest
     @Test
     public void orderVeggies()
     {
-        final List<PersonCustomer> customers = customerService.findCustomers(
-            new PersonName( "Kristian", "Rosenvold" ) );
-        PersonCustomer customer = customers.get(0);
-        OrderService orderService = new OrderService( accountService, inventoryService, customerService );
-        List<Product> products = inventoryService.findProductsByName("Broccoli", "Carrot");
+        final List<PersonCustomer> customers =
+            customerService.findCustomers( new PersonName( "Kristian", "Rosenvold" ) );
+        PersonCustomer customer = customers.get( 0 );
+        OrderService orderService =
+            new OrderService( accountService, inventoryService, customerService );
+        List<Product> products = inventoryService.findProductsByName( "Broccoli", "Carrot" );
         int max = accountService.getMaxItemsForOrder( customer.getCustomerId() );
-        final List<Product> orderedProducts = orderService.orderItems( customer.getCustomerId(), products, max );
-        assertEquals(2, orderedProducts.size());
+        final List<Product> orderedProducts =
+            orderService.orderItems( customer.getCustomerId(), products, max );
+        assertEquals( 2, orderedProducts.size() );
     }
 
 
-    public void testDelete(){
+    public void testDelete()
+    {
         customerService.deleteCustomer( new CustomerId( 124 ) );
     }
 }

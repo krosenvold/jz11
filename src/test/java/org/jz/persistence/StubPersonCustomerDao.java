@@ -12,7 +12,8 @@ import org.jz.services.CustomerServiceTest;
 /**
  * @author Kristian Rosenvold
  */
-public class StubPersonCustomerDao implements PersonCustomerDao
+public class StubPersonCustomerDao
+    implements PersonCustomerDao
 {
     @Override
     public PersonCustomer getPersonCustomer( CustomerId customerId )
@@ -22,13 +23,14 @@ public class StubPersonCustomerDao implements PersonCustomerDao
         {
             return null;
         }
-        return new PersonCustomer( new PersonName( "Freddy" , "Stub"), customerId );
+        return new PersonCustomer( new PersonName( "Freddy", "Stub" ), customerId );
     }
 
     @Override
     public List<PersonCustomer> findPersonCustomers( PersonName personName )
     {
-        return Arrays.asList( new PersonCustomer( personName, new CustomerId( personName.hashCode() )));
+        return Arrays.asList(
+            new PersonCustomer( personName, new CustomerId( personName.hashCode() ) ) );
     }
 
     @Override

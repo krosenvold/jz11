@@ -33,8 +33,8 @@ public class DefaultPersonCustomerDao
         try
         {
             final Connection conn = getConnection();
-            PreparedStatement stmt =
-                conn.prepareStatement( "SELECT firstname, lastname from CUSTOMER WHERE CUSTOMERID=?" );
+            PreparedStatement stmt = conn.prepareStatement(
+                "SELECT firstname, lastname from CUSTOMER WHERE CUSTOMERID=?" );
             stmt.setInt( 1, customerId.getId() );
 
             ResultSet rs = stmt.executeQuery();
@@ -46,7 +46,8 @@ public class DefaultPersonCustomerDao
                     new PersonCustomer( new PersonName( firstName, lastName ), customerId );
                 if ( rs.next() )
                 {
-                    throw new IllegalStateException( "There are multiple customers for id " + customerId.getId() );
+                    throw new IllegalStateException(
+                        "There are multiple customers for id " + customerId.getId() );
                 }
                 return personCustomer;
             }
@@ -126,7 +127,8 @@ public class DefaultPersonCustomerDao
         try
         {
             conn = getConnection();
-            PreparedStatement stmt = conn.prepareStatement( "DELETE from CUSTOMER WHERE CUSTOMERID=?" );
+            PreparedStatement stmt =
+                conn.prepareStatement( "DELETE from CUSTOMER WHERE CUSTOMERID=?" );
             stmt.setInt( 1, customerId.getId() );
             stmt.executeUpdate();
         }
@@ -143,7 +145,8 @@ public class DefaultPersonCustomerDao
         try
         {
             conn = getConnection();
-            PreparedStatement stmt = conn.prepareStatement( "UPDATE CUSTOMER SET PASSIVE=1 WHERE CUSTOMERID=?" );
+            PreparedStatement stmt =
+                conn.prepareStatement( "UPDATE CUSTOMER SET PASSIVE=1 WHERE CUSTOMERID=?" );
             stmt.setInt( 1, customerId.getId() );
             stmt.executeUpdate();
         }

@@ -13,7 +13,8 @@ import org.jz.persistence.PersonCustomerDao;
 /**
  * @author Kristian Rosenvold
  */
-public class CustomerService {
+public class CustomerService
+{
     private final PersonCustomerDao personCustomerDao;
 
     @Inject
@@ -40,12 +41,14 @@ public class CustomerService {
         return personCustomerDao.findPersonCustomers( personName );
     }
 
-    public void deleteCustomer( CustomerId customerId ){
+    public void deleteCustomer( CustomerId customerId )
+    {
         personCustomerDao.deleteCustomer( customerId );
     }
 
 
-    public void passivateCustomer( CustomerId customerId ){
+    public void passivateCustomer( CustomerId customerId )
+    {
         personCustomerDao.passivateCustomer( customerId );
     }
 

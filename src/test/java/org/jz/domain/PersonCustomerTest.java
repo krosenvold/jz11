@@ -26,7 +26,8 @@ public class PersonCustomerTest
         assertEquals( "Kristian Rosenvold", personCustomer.getFullName() );
     }
 
-    public void testPersonName(){
+    public void testPersonName()
+    {
         PersonCustomer personCustomer = new PersonCustomer( personName, customerId );
         assertEquals( personName, personCustomer.getPersonName() );
     }

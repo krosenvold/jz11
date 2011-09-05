@@ -6,15 +6,18 @@ package org.jz.domain;
 public class CreditRanking
 {
 
-    public boolean hasCreditFor(float amount){
+    public boolean hasCreditFor( float amount )
+    {
         return true;
     }
 
-    public static CreditRanking forPrivateCustomers(){
+    public static CreditRanking forPrivateCustomers()
+    {
         return new CreditRanking();
     }
 
-    public static CreditRanking forCompanyCustomer(String ranking){
+    public static CreditRanking forCompanyCustomer( String ranking )
+    {
         return new CreditRanking();
     }
 }

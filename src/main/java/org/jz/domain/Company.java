@@ -6,6 +6,7 @@ package org.jz.domain;
 public class Company
 {
     private final String name;
+
     private final int foretaksnummer;
 
 

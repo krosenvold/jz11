@@ -12,12 +12,14 @@ public abstract class Customer
         this.customerId = customerId;
     }
 
-    public boolean isCompanyCustomer(){
-        return this instanceof  CompanyCustomer;
+    public boolean isCompanyCustomer()
+    {
+        return this instanceof CompanyCustomer;
     }
 
-    public boolean isPersonCustomer(){
-        return this instanceof  PersonCustomer;
+    public boolean isPersonCustomer()
+    {
+        return this instanceof PersonCustomer;
     }
 
     public CustomerId getCustomerId()
